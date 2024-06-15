@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "graph.h": "c",
+        "float.h": "c",
+        "chrono": "c",
+        "algorithm": "c",
+        "random": "c",
+        "dijkstra.h": "c",
+<<<<<<< HEAD
+        "*.tcc": "c"
+=======
+        "future": "c",
+        "system_error": "c"
+>>>>>>> temp-commit
+    }
+}

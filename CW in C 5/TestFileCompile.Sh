@@ -1,0 +1,1 @@
+gcc myTest.c linked_list.c queue.c rpn.c sort.c stack.c -ansi -Wall --pedantic-errors -o myTest

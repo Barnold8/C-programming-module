@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "rpn.h": "c",
+        "sort.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "*.tcc": "c",
+        "sstream": "c"
+    }
+}

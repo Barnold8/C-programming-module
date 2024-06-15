@@ -1,0 +1,1 @@
+valgrind --tool=memcheck --leak-check=yes --show-reachable=yes ./task1 50 50 90

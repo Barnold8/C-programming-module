@@ -1,0 +1,43 @@
+    /* Declarations */
+    int len = getListLen(list);                                 /* List length */
+    int mid = len/2;                                            /* Middle point of the list */
+    int count = 0;
+    Node * PTR = list->head;                                    /* To point to the list for adding */
+    LinkedList* A = initialise_linked_list();                   /* Since linked lists cant just be allocated a length I am going to add each elem up until the mid point */
+    LinkedList* B = initialise_linked_list();
+    /* ------------------ */
+
+    if(len < 2){ /* If the list is of size 1, return (the middle point of the wiki image) */
+      return;
+
+    }
+    /* Create the new lists based on the split */
+    while(count != mid && PTR){
+
+      append_linked_list(A,PTR->data);
+      count++;
+      PTR = PTR->next;
+      remove_head_linked_list(list);
+
+    }
+
+    while (count != count - mid && PTR)
+    {
+      append_linked_list(B,PTR->data);
+      count++;
+      PTR = PTR->next;
+      remove_head_linked_list(list);
+    }
+    /* ------------------------- */
+
+
+    /* Recursively call merge sort to keep splitting the lists */
+    free_linked_list(A);
+    free_linked_list(B);
+    /*
+    merge_sort(B,(*compare));
+    merge_sort(A,(*compare)); 
+*/
+
+    /* ------------------------- */
+    finalMerge(list,A,B);

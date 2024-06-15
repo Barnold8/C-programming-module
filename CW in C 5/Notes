@@ -1,0 +1,200 @@
+
+Insertion SORT:
+
+    Go through stack before actually inserting the data
+
+    10 12 15 20
+
+    Inserting 14
+
+
+    Look at 10, greater so we move
+    Look at 12, greater so we move
+    Look at 15, less so we insert
+
+
+    Node : 15, ptr to Node: 15
+
+    previous node (Node : 12, ptr to Node : 14)
+    Inserted node (Node : 14, ptr to Node : 15)
+
+
+Correct ouput for test:
+
+    appear
+    billowy
+    greedy
+    harmonious
+    jittery
+    lace
+    lock
+    naive
+    pen
+    pencil
+    practise
+    precede
+    push
+    record
+    star
+
+
+
+My output:
+
+appear
+billowy
+greedy
+harmonious
+jittery
+lock
+naive
+pen
+pencil
+practise
+precede
+push
+record
+star
+
+
+OLD CODE
+
+LookingChar = *expr;
+		if((int) LookingChar != 32){
+		/* Functional code should go here since this regards non space chars */
+
+			if((is_operator(LookingChar))){ /* If its an operator we need some sort of logic */
+
+				if(peek_stack(stack) == NULL){ /* If the stack has nothing in it, then we can just add any operator		*((char *)peek_stack(stack))) */	
+
+					push_stack(stack,&LookingChar,sizeof(int));
+					
+				}
+				else{
+					
+					if(LookingChar == ')'){
+
+						while(*((char *)peek_stack(stack)) != '('){ /* Put all the operators from the stack up until '(' on the Notation and throw the '(' away */
+							
+							 push_queue(Notation,&LookingChar,sizeof(int));
+							 free(peek_stack(stack));
+							 pop_stack(stack);
+
+						}
+						free(peek_stack(stack));
+						pop_stack(stack);
+
+
+					}
+
+					else if(test_presedence(LookingChar,*((char *)peek_stack(stack)) >=1) || LookingChar == '(' ){ /* If the presedence of the incoming char is higher pres than the stack char, add it to the stack */
+
+						push_stack(stack,&LookingChar,sizeof(int));
+
+					}else{push_queue(Notation,&LookingChar,sizeof(int)); /* If the pres isnt higher, just add it to the Notation */
+				}
+				}
+			}
+			else{ /* But if its an operand, just add it to the notation as is */
+
+				push_queue(Notation,&LookingChar,sizeof(int));
+
+			}
+		}
+		
+		expr++;
+
+	}
+	while(peek_stack(stack) != NULL){ /* Put all the operators from the stack up until '(' on the Notation and throw the '(' away */
+			opChar = *((char *)peek_stack(stack));
+			push_queue(Notation,&opChar,sizeof(char));
+			free(peek_stack(stack));
+			pop_stack(stack);
+
+	}
+
+	printf("------Stack------\n");
+ 	print_stack(stack, print_string);/*	 Valgrind dont like this function */
+	printf("-----------------\n");
+	
+
+$ make task3_tests_run
+...
+
+*** RUNNING TEST ***
+$ ./task3_test "5+2-3*4/2^((1.43+2.57)/3)"
+5
+2
++
+3
+4
+*
+2
+1.43
+2.57
++
+3
+/
+^
+/
+-
+*** TEST COMPLETE ***
+
+*** RUNNING TEST ***
+$ ./task3_test "4 * (3.332 + 5.668) / 3 ^ 2.0"
+4
+3.332
+5.668
++
+*
+3
+2.0
+^
+/
+*** TEST COMPLETE ***
+
+*** RUNNING TEST ***
+$ ./task3_test "-5 + 6 / (+2.76 + 1.24 + +1 ^ 2) - -10.2"
+-5
+6
++2.76
+1.24
++
++1
+2
+^
++
+/
++
+-10.2
+-
+*** TEST COMPLETE ***
+
+*** RUNNING TEST ***
+$ ./task3_test "((1+7)-(1*6)"
+error: unable to parse expression.
+*** TEST COMPLETE ***
+
+*** RUNNING TEST ***
+$ ./task3_test "a+b"
+error: unable to parse expression.
+*** TEST COMPLETE ***
+
+else{
+			str[0] = op;
+
+			if(op == ')'){
+
+				AddRestOps(Q,S,1);
+			}
+			else if(test_presedence(res,op) >=1){
+
+				push_stack(S,&op,sizeof(char));
+
+			}else{
+				
+				push_queue(Q,str,sizeof(char)*2);
+				
+			}
+
+		}
